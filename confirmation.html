@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Frites - Inscription Confirmée</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #FF6B01;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 2.5em;
+        }
+        
+        .confirmation-box {
+            background-color: #fff;
+            color: #000;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .confirmation-icon {
+            color: #FF6B01;
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            background-color: #FF6B01;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background-color: #E05A00;
+        }
+        
+        .next-steps {
+            background-color: rgba(255, 107, 1, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .next-steps ol {
+            text-align: left;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.8em;
+        }
+        
+        .upsell {
+            background-color: #FF6B01;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.9; }
+            50% { opacity: 1; }
+            100% { opacity: 0.9; }
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            max-width: 300px;
+            z-index: 100;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .reviews {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        
+        .review {
+            background-color: #fff;
+            color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            width: 30%;
+            font-size: 0.9em;
+        }
+        
+        .stars {
+            color: #FF6B01;
+            margin-bottom: 10px;
+        }
+        
+        .hidden-fees {
+            font-size: 0.7em;
+            color: #777;
+            margin-top: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .show-fees:hover + .hidden-fees {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BASIC FRITES</h1>
+        <p>Transformez votre corps comme une patate en fritte !</p>
+    </header>
+    
+    <div class="container">
+        <div class="confirmation-box">
+            <div class="confirmation-icon">✓</div>
+            <h2>Félicitations ! Votre inscription est confirmée</h2>
+            <p>Bienvenue dans la famille Basic Frites ! Votre parcours de transformation commence maintenant.</p>
+            <p>Un email de confirmation avec tous les détails de votre abonnement a été envoyé à votre adresse email.</p>
+            
+            <a href="#" class="cta-button">ACCÉDER À MON ESPACE MEMBRE</a>
+            
+            <div class="upsell">
+                <h3>OFFRE SPÉCIALE NOUVEAUX MEMBRES</h3>
+                <p>Ajoutez 3 séances avec un coach personnel pour seulement 79€ (au lieu de 150€)</p>
+                <p><strong>Cette offre expire dans 24h !</strong></p>
+                <a href="#" class="cta-button">J'EN PROFITE</a>
+            </div>
+        </div>
+        
+        <div class="reviews">
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>"J'ai perdu 15kg en seulement 3 mois grâce à Basic Frites! Leur programme est incroyable!"</p>
+                <p><strong>- Marie L.</strong></p>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>"Les coachs sont géniaux et l'ambiance est super motivante. Meilleure salle où j'ai été!"</p>
+                <p><strong>- Thomas D.</strong></p>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>"L'abonnement premium vaut vraiment le coup, j'ai eu des résultats au-delà de mes espérances!"</p>
+                <p><strong>- Sophie M.</strong></p>
+            </div>
+        </div>
+        
+        <div class="next-steps">
+            <h3>Prochaines étapes</h3>
+            <ol>
+                <li>Téléchargez notre application mobile pour accéder à votre carte de membre virtuelle</li>
+                <li>Réservez votre séance d'orientation gratuite avec l'un de nos coachs</li>
+                <li>Complétez votre profil pour recevoir un plan d'entraînement personnalisé</li>
+            </ol>
+            
+            <p class="show-fees"><a href="#">Afficher le détail des frais</a></p>
+            <div class="hidden-fees">
+                <p>Frais d'inscription : 49,99€ (prélevés immédiatement)</p>
+                <p>Frais administratifs annuels : 29,99€ (prélevés avec la première mensualité)</p>
+                <p>Frais de carte membre : 9,99€ (prélevés avec la première mensualité)</p>
+                <p>Caution badge d'accès : 25€ (remboursable à la fin de l'abonnement)</p>
+                <p>Frais de résiliation anticipée : 150€</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Basic Frites. Tous droits réservés.</p>
+            <p>Votre première mensualité de 39,99€ ainsi que les frais d'inscription de 49,99€ ont été prélevés sur votre carte. Le prochain prélèvement aura lieu le 14/04/2025.</p>
+            <p>Pour toute question, contactez notre service client au 01 23 45 67 89 (appel non surtaxé) ou par email à support@basicfrites.fr</p>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification" style="display: none;">
+        <p><strong>Pierre vient de s'inscrire</strong> à notre formule Premium à Paris.</p>
+    </div>
+    
+    <script>
+        // Afficher la notification après quelques secondes
+        setTimeout(function() {
+            document.getElementById('notification').style.display = 'block';
+            
+            // Cacher la notification après quelques secondes
+            setTimeout(function() {
+                document.getElementById('notification').style.display = 'none';
+            }, 5000);
+        }, 3000);
+        
+        // Créer d'autres notifications périodiquement
+        const names = ['Julie', 'Thomas', 'Emma', 'Lucas', 'Camille', 'Antoine'];
+        const cities = ['Lyon', 'Marseille', 'Toulouse', 'Bordeaux', 'Lille', 'Nantes'];
+        
+        setInterval(function() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            
+            const notification = document.getElementById('notification');
+            notification.innerHTML = `<p><strong>${randomName} vient de s'inscrire</strong> à notre formule Premium à ${randomCity}.</p>`;
+            notification.style.display = 'block';
+            
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 5000);
+        }, 15000);
+    </script>
+</body>
+</html>

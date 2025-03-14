@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Frites - Inscription</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #FF6B01;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 2.5em;
+        }
+        
+        .promo-banner {
+            background-color: #FF6B01;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        form {
+            background-color: #fff;
+            color: #000;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-weight: normal;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .checkbox-label input {
+            width: auto;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .small-text {
+            font-size: 0.75em;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        .timer {
+            background-color: #FF6B01;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #777;
+            margin-right: 10px;
+        }
+        
+        .discount-price {
+            color: #FF6B01;
+        }
+        
+        .premium-option {
+            background-color: #f8f8f8;
+            border: 2px solid #FF6B01;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .premium-option:after {
+            content: "POPULAIRE";
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #FF6B01;
+            color: white;
+            padding: 2px 8px;
+            font-size: 0.7em;
+            border-radius: 3px;
+        }
+        
+        .submit-btn {
+            background-color: #FF6B01;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #E05A00;
+        }
+        
+        .cancel-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #999;
+            font-size: 0.8em;
+            text-decoration: none;
+        }
+        
+        .cancel-link:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.8em;
+        }
+        
+        .error {
+            color: #FF6B01;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="confetti"></div>
+    <header>
+        <h1>BASIC FRITES</h1>
+        <p>Transformez votre corps comme une patate en fritte !</p>
+    </header>
+    
+    <div class="container">
+        <div class="promo-banner">
+            OFFRE SPÉCIALE : -50% sur l'abonnement aujourd'hui uniquement !
+        </div>
+        
+        <div class="timer">
+            Cette offre expire dans: <span id="countdown">10:00</span>
+        </div>
+        
+        <form id="registration-form" action="javascript:showConfirmation();">
+            <h2>Créez votre compte Basic Frites</h2>
+            
+            <div class="form-group">
+                <label for="nom">Nom complet *</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telephone">Téléphone *</label>
+                <input type="tel" id="telephone" name="telephone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Âge *</label>
+                <input type="number" id="age" name="age" min="16" max="99" required>
+            </div>
+            
+            <h3>Choisissez votre formule</h3>
+            
+            <div class="form-group">
+                <div class="premium-option">
+                    <input type="radio" id="premium" name="formule" value="premium" checked>
+                    <label for="premium">Formule Premium - Accès illimité 24/7 + Coach personnel</label>
+                    <div class="price">
+                        <span class="original-price">79,99€/mois</span>
+                        <span class="discount-price">39,99€/mois</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <input type="radio" id="standard" name="formule" value="standard">
+                    <label for="standard">Formule Standard - Accès basique en heures creuses</label>
+                    <div class="price">
+                        <span class="original-price">39,99€/mois</span>
+                        <span class="discount-price">19,99€/mois</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="duree">Durée d'engagement *</label>
+                <select id="duree" name="duree" required>
+                    <option value="12">12 mois (Meilleure offre !)</option>
+                    <option value="6">6 mois</option>
+                    <option value="3">3 mois (+ supplément de 5€/mois)</option>
+                    <option value="1">1 mois (+ supplément de 10€/mois)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="assurance" name="assurance" checked>
+                        Assurance annulation (seulement 4,99€/mois)
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        Je souhaite recevoir les offres spéciales et les conseils d'entraînement par email
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        J'accepte les <a href="#">termes et conditions</a> et la <a href="#">politique de confidentialité</a> *
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="partenaires" name="partenaires" checked>
+                        Je consens à recevoir des offres de partenaires soigneusement sélectionnés
+                        <div class="small-text">Inclut des remises sur des compléments alimentaires, équipements sportifs et plus encore</div>
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">COMMENCER MON PARCOURS FITNESS</button>
+            
+            <a href="#" class="cancel-link" onmouseover="moveLink(this)" id="cancel-link">Annuler</a>
+        </form>
+        
+        <footer>
+            © 2025 Basic Frites. Tous droits réservés.<br>
+            <small>Les frais d'inscription de 49,99€ et les frais administratifs annuels de 29,99€ s'appliquent. Modalités de résiliation disponibles dans nos conditions générales.</small>
+        </footer>
+    </div>
+    
+    <script>
+        // Compte à rebours
+        function startCountdown() {
+            let minutes = 10;
+            let seconds = 0;
+            
+            const countdownElement = document.getElementById('countdown');
+            const interval = setInterval(function() {
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(interval);
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+                
+                countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+            }, 1000);
+        }
+        
+        // Fonction pour déplacer le lien d'annulation
+        function moveLink(link) {
+            const randomX = Math.floor(Math.random() * 400) - 200;
+            const randomY = Math.floor(Math.random() * 200) - 100;
+            
+            // Ne déplace pas complètement hors de l'écran
+            link.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            
+            // Retourne à sa position après un délai
+            setTimeout(() => {
+                link.style.transform = 'translate(0, 0)';
+            }, 3000);
+        }
+        
+        // Fonction de redirection vers la page de confirmation
+        function showConfirmation() {
+            // Vérifier si le formulaire est valide
+            const form = document.getElementById('registration-form');
+            if (form.checkValidity()) {
+                // Créer l'animation de confettis
+                showConfetti();
+                
+                // Rediriger après un délai
+                setTimeout(() => {
+                    window.location.href = "confirmation.html";
+                }, 1500);
+            }
+        }
+        
+        // Fonction pour afficher les confettis
+        function showConfetti() {
+            const confettiElement = document.getElementById('confetti');
+            confettiElement.style.display = 'block';
+            
+            // Simuler des confettis avec des points colorés
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.backgroundColor = i % 3 === 0 ? '#FF6B01' : (i % 3 === 1 ? '#fff' : '#000');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = Math.random() * 100 + 'vh';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
+                
+                confettiElement.appendChild(confetti);
+            }
+        }
+        
+        // Simuler une page de confirmation
+        window.confirmationPage = `
+            <!DOCTYPE html>
+            <html lang="fr">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Basic Frites - Inscription Confirmée</title>
+                <style>
+                    /* Style identique au formulaire */
+                    body {
+                        font-family: 'Arial', sans-serif;
+                        background-color: #000;
+                        color: #fff;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    
+                    .container {
+                        max-width: 800px;
+                        margin: 0 auto;
+                        padding: 20px;
+                    }
+                    
+                    header {
+                        background-color: #FF6B01;
+                        padding: 20px;
+                        text-align: center;
+                        margin-bottom: 30px;
+                    }
+                    
+                    h1 {
+                        margin: 0;
+                        color: #fff;
+                        font-size: 2.5em;
+                    }
+                    
+                    .confirmation-box {
+                        background-color: #fff;
+                        color: #000;
+                        padding: 30px;
+                        border-radius: 8px;
+                        text-align: center;
+                        margin-bottom: 30px;
+                    }
+                    
+                    .confirmation-icon {
+                        color: #FF6B01;
+                        font-size: 4em;
+                        margin-bottom: 20px;
+                    }
+                    
+                    .cta-button {
+                        background-color: #FF6B01;
+                        color: white;
+                        border: none;
+                        padding: 15px 25px;
+                        font-size: 1.2em;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        display: inline-block;
+                        margin-top: 20px;
+                        text-decoration: none;
+                    }
+                    
+                    .next-steps {
+                        background-color: rgba(255, 107, 1, 0.1);
+                        padding: 20px;
+                        border-radius: 8px;
+                        margin-bottom: 30px;
+                    }
+                    
+                    .footer {
+                        text-align: center;
+                        padding: 20px;
+                        color: #777;
+                        font-size: 0.8em;
+                    }
+                    
+                    .upsell {
+                        background-color: #FF6B01;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        margin-top: 20px;
+                        text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <header>
+                    <h1>BASIC FRITES</h1>
+                    <p>Transformez votre corps comme une patate en fritte !</p>
+                </header>
+                
+                <div class="container">
+                    <div class="confirmation-box">
+                        <div class="confirmation-icon">✓</div>
+                        <h2>Félicitations ! Votre inscription est confirmée</h2>
+                        <p>Bienvenue dans la famille Basic Frites ! Votre parcours de transformation commence maintenant.</p>
+                        <p>Un email de confirmation avec tous les détails de votre abonnement a été envoyé à votre adresse email.</p>
+                        
+                        <a href="#" class="cta-button">ACCÉDER À MON ESPACE MEMBRE</a>
+                        
+                        <div class="upsell">
+                            <h3>OFFRE SPÉCIALE NOUVEAUX MEMBRES</h3>
+                            <p>Ajoutez 3 séances avec un coach personnel pour seulement 79€ (au lieu de 150€)</p>
+                            <p><strong>Cette offre expire dans 24h !</strong></p>
+                            <a href="#" class="cta-button">J'EN PROFITE</a>
+                        </div>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <h3>Prochaines étapes</h3>
+                        <ol>
+                            <li>Téléchargez notre application mobile pour accéder à votre carte de membre virtuelle</li>
+                            <li>Réservez votre séance d'orientation gratuite avec l'un de nos coachs</li>
+                            <li>Complétez votre profil pour recevoir un plan d'entraînement personnalisé</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="footer">
+                        <p>© 2025 Basic Frites. Tous droits réservés.</p>
+                        <p>Votre première mensualité de 39,99€ ainsi que les frais d'inscription de 49,99€ ont été prélevés sur votre carte. Le prochain prélèvement aura lieu le 14/04/2025.</p>
+                        <p>Pour toute question, contactez notre service client au 01 23 45 67 89 (appel non surtaxé) ou par email à support@basicfrites.fr</p>
+                    </div>
+                </div>
+            </body>
+            </html>
+        `;
+        
+        // Créer la page de confirmation
+        function createConfirmationPage() {
+            const blob = new Blob([window.confirmationPage], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'confirmation.html';
+            
+            // Créer automatiquement le fichier confirmation.html
+            link.click();
+        }
+        
+        // Initialiser le tout
+        window.onload = function() {
+            startCountdown();
+            createConfirmationPage();
+        };
+    </script>
+</body>
+</html>
